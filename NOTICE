@@ -1,0 +1,10 @@
+ZhuaTech MOM - 制造运营管理系统
+
+Copyright 2026 上海如静知华信息科技有限公司
+Website: https://www.zhuatech.cn/
+
+本发行包包含由上海如静知华信息科技有限公司开发的源代码、文档与界面资源。
+本项目采用 ZhuaTech Community Source License 1.0，仅限个人非商业学习、研究和技术交流。
+任何商业使用、生产部署、项目交付、SaaS 运营或收费服务均须事先获得书面授权。
+
+第三方依赖分别适用其原始许可，详情请以 Maven 与 npm 依赖清单为准。
