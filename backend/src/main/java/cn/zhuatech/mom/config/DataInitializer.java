@@ -8,16 +8,27 @@ import org.springframework.context.annotation.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 @Configuration public class DataInitializer {
- @Bean CommandLineRunner seed(BusinessRecordRepository records,SystemSettingRepository settings,DomainCatalog catalog) {
-  return args -> { if(records.count()>0)return;
+ @Bean CommandLineRunner seed(BusinessRecordRepository records,SystemSettingRepository settings,DomainCatalog catalog,
+         ProductionOrderRepository productionOrders) {
+  return args -> {
+   if(settings.count()==0) {
             settings.save(new SystemSetting("company", "上海如静知华信息科技有限公司"));
             settings.save(new SystemSetting("website", "https://www.zhuatech.cn/"));
             settings.save(new SystemSetting("recordNoRule", "MOM-{YYYY}-{SEQ}"));
             settings.save(new SystemSetting("retentionPolicy", "按企业制度配置"));
             settings.save(new SystemSetting("integrationMode", "ADAPTER_RESERVED"));
-   int sequence=1; for(var module:catalog.modules()) {
+   }
+   if(records.count()==0) {
+    int sequence=1; for(var module:catalog.modules()) {
     String no="MOM-DEMO-"+String.format("%03d",sequence);
     records.save(new BusinessRecord(no,module.code(),module.name()+"标准业务事项","上海总部",sequence%3==0?"内控经理":"业务专员",catalog.initialStatus(),BigDecimal.valueOf(sequence*12500L),sequence*2,LocalDate.now().plusDays(sequence*3L),sequence%4==0?"关注":"正常",module.description()+"；演示台账、状态流、权限和审计能力")); sequence++;
+    }
+   }
+   if(productionOrders.count()==0) {
+    var demo=new ProductionOrder("MO-DEMO-2026-001","ZH-P-1001","智能控制器总成","ZH-SH","LINE-A",
+        1000,8,LocalDate.now(),LocalDate.now().plusDays(5));
+    demo.updateReadiness(true,false,false);
+    productionOrders.save(demo);
    }
   };
  }

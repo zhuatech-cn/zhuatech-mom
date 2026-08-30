@@ -22,5 +22,14 @@ export const api={
   reviewEnterprise:(id,decision)=>request(`/api/admin/enterprise/controls/${id}/review`,{method:'POST',body:JSON.stringify({decision,remark:'工作台复核'})}),
   registerEnterpriseDocument:id=>request(`/api/enterprise/controls/${id}/documents`,{method:'POST',body:JSON.stringify({fileName:'业务凭证.pdf',mediaType:'application/pdf',sizeBytes:2048,sha256:'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',storageKey:`enterprise/${id}/evidence.pdf`})}),
   completeEnterprise:id=>request(`/api/enterprise/controls/${id}/complete`,{method:'POST'}),
-  syncEnterprise:id=>request(`/api/admin/enterprise/controls/${id}/sync`,{method:'POST',body:JSON.stringify({success:true,externalRef:`ADAPTER-${id}`,message:'工作台模拟适配器回执'})})
+  syncEnterprise:id=>request(`/api/admin/enterprise/controls/${id}/sync`,{method:'POST',body:JSON.stringify({success:true,externalRef:`ADAPTER-${id}`,message:'工作台模拟适配器回执'})}),
+  executionSummary:()=>request('/api/execution/summary'),
+  productionOrders:(params={})=>request('/api/execution/orders?'+query(params)),
+  productionOrder:id=>request(`/api/execution/orders/${id}`),
+  createProductionOrder:data=>request('/api/execution/orders',{method:'POST',body:JSON.stringify(data)}),
+  updateProductionReadiness:(id,data)=>request(`/api/admin/execution/orders/${id}/readiness`,{method:'PUT',body:JSON.stringify(data)}),
+  releaseProductionOrder:id=>request(`/api/admin/execution/orders/${id}/release`,{method:'POST',body:JSON.stringify({remark:'生产执行中心下达'})}),
+  productionAction:(id,action)=>request(`/api/execution/orders/${id}/actions`,{method:'POST',body:JSON.stringify({action,remark:'生产执行中心操作'})}),
+  productionReport:(id,data)=>request(`/api/execution/orders/${id}/reports`,{method:'POST',body:JSON.stringify(data)}),
+  completeProductionOrder:id=>request(`/api/admin/execution/orders/${id}/complete`,{method:'POST',body:JSON.stringify({remark:'数量、质量与异常条件已核验，执行完工关账'})})
 }

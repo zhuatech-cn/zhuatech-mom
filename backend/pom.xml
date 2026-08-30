@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent><groupId>org.springframework.boot</groupId><artifactId>spring-boot-starter-parent</artifactId><version>4.0.7</version><relativePath/></parent>
-  <groupId>cn.zhuatech</groupId><artifactId>zhuatech-mom-backend</artifactId><version>1.0.0-SNAPSHOT</version>
+  <groupId>cn.zhuatech</groupId><artifactId>zhuatech-mom-backend</artifactId><version>1.1.0</version>
   <name>ZhuaTech Mom Backend</name><description>知华科技制造运营管理系统企业开源版</description><url>https://www.zhuatech.cn/</url>
   <properties><java.version>21</java.version></properties>
   <dependencies>
