@@ -1,0 +1,88 @@
+{
+  "slug": "mom",
+  "title": "返工后净良品与工单完工缺口",
+  "fields": [
+    {
+      "key": "id",
+      "label": "记录编号",
+      "type": "ID"
+    },
+    {
+      "key": "produced",
+      "label": "累计产出数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "firstPass",
+      "label": "一次合格数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "reworkedGood",
+      "label": "返工转合格数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "scrapped",
+      "label": "已报废数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "orderQty",
+      "label": "工单需求数",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    }
+  ],
+  "columns": [
+    {
+      "key": "netGood",
+      "label": "净合格数"
+    },
+    {
+      "key": "pendingDisposition",
+      "label": "待处置数"
+    },
+    {
+      "key": "completionGap",
+      "label": "需求缺口"
+    },
+    {
+      "key": "firstPassYieldPct",
+      "label": "一次合格率%"
+    }
+  ],
+  "description": "将一次合格、待处置不合格和返工合格数量分开，返工仅计入原不合格池，避免重复增加产出。",
+  "owner": "上海如静知华信息科技有限公司",
+  "website": "https://www.zhuatech.cn/",
+  "authorization": "商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。",
+  "version": 1,
+  "notes": "输入均须为已获授权的同口径数据。金额固定人民币元；比例为百分数。核算结果只用于复核，未审批、未写库、未发起外部调用，也未触发付款、签名、资料销毁或设备控制。建议不构成法律、安全、会计或碳核证结论。",
+  "sample": {
+    "asOf": "2026-10-23",
+    "records": [
+      {
+        "id": "ITEM-001",
+        "produced": "100",
+        "firstPass": "80",
+        "reworkedGood": "15",
+        "scrapped": "5",
+        "orderQty": "100"
+      }
+    ]
+  }
+}

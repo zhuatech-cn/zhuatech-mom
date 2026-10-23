@@ -1,0 +1,51 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "REVIEW",
+      "netGood": "#95",
+      "pendingDisposition": "#0",
+      "completionGap": "#5"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "reworkedGood": "10"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "pendingDisposition": "#5"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "orderQty": "95"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "reworkedGood": "16"
+    },
+    "expected": {},
+    "error": true
+  },
+  {
+    "patch": {
+      "produced": "0",
+      "firstPass": "0",
+      "reworkedGood": "0",
+      "scrapped": "0",
+      "orderQty": "0"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false
+  }
+]
